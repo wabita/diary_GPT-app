@@ -11,7 +11,7 @@ class DiaryInput(BaseModel):
     content: str
 
 class DiaryOutput(DiaryInput):
-    posted_on: date
+    posted_on: str
 
 @app.get("/")
 def home():
@@ -20,14 +20,17 @@ def home():
 filename = "diary.json"
 diary_data=[]
 
-if os.path.exists(filename):
-    with open(filename,"r",encoding="utf-8") as f:
+if not os.path.exists(filename):
+    with open(filename,"w",encoding="utf-8") as f:
+        json.dump([], f, ensure_ascii=False)
+
+with open(filename,"r",encoding="utf-8") as f:
         diary_data =json.load(f)
 
 
 @app.post("/items/", response_model = DiaryOutput)
 def create_item(item: DiaryInput):
-    today =date.today()
+    today =date.today().strftime("%Y/%m/%d/%a")
     diary= DiaryOutput(title=item.title, content=item.content, posted_on=today)
     diary_data.append(diary.model_dump())
     with open(filename, "w", encoding="utf-8") as f:
