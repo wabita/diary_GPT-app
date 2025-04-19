@@ -15,8 +15,15 @@ class DiaryOutput(DiaryInput):
 def home():
     return {"message": "このサイトは日記投稿APIです。"}
     
+diary_list =[]
 
 @app.post("/items/", response_model = DiaryOutput)
 def create_item(item: DiaryInput):
     today =date.today()
-    return DiaryOutput(title=item.title, content=item.content, posted_on=today)
+    diary= DiaryOutput(title=item.title, content=item.content, posted_on=today)
+    diary_list.append(diary)
+    return diary
+
+@app.get("/diary_page")
+def get_diary():
+    return diary_list
