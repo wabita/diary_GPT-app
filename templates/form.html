@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>post my diary</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=RocknRoll+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/static/commn.css">
+        <link rel="stylesheet" href="/static/form.css">
+
+    </head>
+    <body>
+        <form id="diary-form" method="post" action="/items">
+            <label>title：</label>
+            <input type="text" name="title" id="title">
+            <textarea name="content" id="content" placeholder="今日の思い出..." required></textarea>
+            <button type="submit">▶</button>
+        </form>
+
+        <script>
+            document.getElementById("diary-form").addEventListener("submit", async function (e) {
+              e.preventDefault(); // フォームの通常の送信をキャンセル
+        
+              const title = document.getElementById("title").value;
+              const content = document.getElementById("content").value;
+        
+              const response = await fetch("/items", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ title, content })
+              });
+        
+              const result = await response.json();
+              alert("投稿しました！");
+              window.location.href = "/list"; // 投稿後にリストへ移動
+            });
+          </script>
+          <script src="/static/form.js"></script>
+
+    </body>
+</html>

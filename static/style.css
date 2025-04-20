@@ -1,0 +1,95 @@
+:root {
+    --back: #dddddd;
+    --main: #b3d0d7;
+    --accent1: #82aaaa;
+    --accent2: #888888;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/*font*/
+body {
+    font-family: "DotGothic16", sans-serif;
+    background: var(--back);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* フォーム全体 */
+#diary-form {
+    position: fixed;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background: var(--main);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 入力エリアを中央揃えに */
+}
+label {
+    margin-bottom: 7px; /* ← 好きな間隔に */
+    align-self: flex-start;
+    margin-left: 5%;
+}
+
+
+/* タイトル入力 */
+#title {
+    width: 99%;
+    margin: 0 auto;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px; 
+}
+
+/* 本文入力 */
+#content {
+    width: 99%;
+    margin: 0 auto;
+    font-family: "DotGothic16", sans-serif;
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    min-height: 60px;
+    resize: none;
+    overflow-y: auto;
+    margin-bottom: 10px; 
+}
+
+#content::placeholder {
+    color: #888;
+}
+
+/* 送信ボタン */
+button {
+    align-self: flex-end;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    background: var(--accent1);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    margin-right: calc(3%); /* titleやcontentと揃えて右に配置 */
+    align-self: flex-end;
+}
+
+button:hover {
+    background: var(--accent2);
+}

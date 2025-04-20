@@ -1,0 +1,26 @@
+:root {
+    --back: #dddddd;
+    --main: #b3d0d7;
+    --accent1: #82aaaa;
+    --accent2: #888888;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "DotGothic16", sans-serif;
+    background: var(--back);
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.dotgothic16-regular {
+    font-family: "DotGothic16", sans-serif;
+}
+
+
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>view my diary</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=RocknRoll+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="/static/commn.css">
+        <link rel="stylesheet" href="/static/list.css">
+    </head>
+    <body>
+        {% for diary in diaries %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+          <h2>{{ diary.title }}（{{ diary.posted_on }}）</h2>
+          <p>{{ diary.content }}</p>
+          <p><strong>コメント:</strong> {{ diary.commented }}</p>
+        </div>
+      {% endfor %}
+      <script src="/static/list.js"></script>
+    </body>
+</html>
