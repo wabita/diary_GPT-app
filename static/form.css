@@ -1,8 +1,18 @@
+/*model表示*/
+#live2dCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 600px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
 /* フォーム全体 */
 #diary-form {
     position: fixed;
     bottom: -5px;
-    left: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -72,3 +82,5 @@ button {
 button:hover {
     background: var(--accent2);
 }
+
+

@@ -13,13 +13,15 @@
         <link rel="stylesheet" href="/static/list.css">
     </head>
     <body>
+      <h1>diary lists...</h1>
+      <div id="diary-list">
         {% for diary in diaries %}
-        <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+        <div class="one-diary">
           <h2>{{ diary.title }}（{{ diary.posted_on }}）</h2>
           <p>{{ diary.content }}</p>
           <p><strong>コメント:</strong> {{ diary.commented }}</p>
         </div>
       {% endfor %}
-      <script src="/static/list.js"></script>
+      </div>
     </body>
 </html>

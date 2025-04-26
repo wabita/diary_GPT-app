@@ -14,34 +14,18 @@
 
     </head>
     <body>
-        <form id="diary-form" method="post" action="/items">
-            <label>title：</label>
-            <input type="text" name="title" id="title">
+        <canvas id="live2dCanvas"></canvas>
+
+        <form id="diary-form">
+            <label for="title">title：</label>
+            <input type="text" name="title" id="title" required>
             <textarea name="content" id="content" placeholder="今日の思い出..." required></textarea>
             <button type="submit">▶</button>
         </form>
-
-        <script>
-            document.getElementById("diary-form").addEventListener("submit", async function (e) {
-              e.preventDefault(); // フォームの通常の送信をキャンセル
+        <script src="/static/pixi.min.js"></script>
+        <script src="/static/live2dcubismcore.min.js"></script>
+        <script type="module" src="/static/live2dcubismframework.js"></script>
+        <script type="module" src="/static/form.js" defer></script>
         
-              const title = document.getElementById("title").value;
-              const content = document.getElementById("content").value;
-        
-              const response = await fetch("/items", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ title, content })
-              });
-        
-              const result = await response.json();
-              alert("投稿しました！");
-              window.location.href = "/list"; // 投稿後にリストへ移動
-            });
-          </script>
-          <script src="/static/form.js"></script>
-
     </body>
 </html>
